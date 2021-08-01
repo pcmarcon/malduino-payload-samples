@@ -12,7 +12,7 @@ Payload Sample Files
 ====================
 single_file_enc.ps1 - will encrypt only the file test.txt on the current drive and show a fake screen asking for payment
 
-virtual_malduino.bat - save this .bat on the windows computer when is not possible to connect the USB Malduino
+virtual_malduino.bat - use this .bat on the windows computer when is not possible to connect the USB Malduino
 
 screen_enc.jpg - fake ransomware encryption image to display
 
