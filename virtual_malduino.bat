@@ -1,5 +1,6 @@
-rem put this lines on the malduino script
+rem save this .bat on the windows computer when is not possible to connect the USB Malduino
 
+rem change the drive letter if needed
 d:
 
 powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' -Force) | iex"
