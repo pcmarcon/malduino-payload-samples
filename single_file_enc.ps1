@@ -2,7 +2,7 @@
 # file to encrypt
 $drive = (get-location).Drive.Name
 $file = $drive + ":\test.txt"
-if (-not(Test-Path -Path $file -PathType Leaf)) { $host.Exit() }
+if (-not(Test-Path -Path $file -PathType Leaf)) { exit }
 #
 echo "Prepare encryption key and IV"
 sleep 10
