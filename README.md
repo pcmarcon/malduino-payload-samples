@@ -13,9 +13,9 @@ single_file_enc.ps1 - will encrypt only the file test.txt on the current drive a
 
 single_file_enc.bat - list of commands that must be executed using malduino script
 
+screen_enc.jpg - fake ransomware encryption image to display
 
+single_file_enc_malduino.ino - arduino firmware with payload script for ORIGINAL MALDUINO HW
 
-
-
-
+single_file_enc_generic.ino - arduino firmware with payload script for GENERIC USB ATMEGA32U4 HW
 
