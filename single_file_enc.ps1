@@ -58,4 +58,4 @@ $pictureBox.Height =  $img.Size.Height;
 $pictureBox.Image = $img;
 $form.controls.add($pictureBox)
 $form.Add_Shown( { $form.Activate() } )
-$form.ShowDialog()
+$form.Show()
