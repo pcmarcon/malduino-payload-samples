@@ -1,4 +1,4 @@
-rem save this .bat on the windows computer when is not possible to connect the USB Malduino
+rem use this .bat on the windows computer when is not possible to connect the USB Malduino
 
 rem change the drive letter if needed
 d:
