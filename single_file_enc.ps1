@@ -3,7 +3,7 @@
 $file = "test.txt"
 $drive = (get-location).Drive.Name
 $file_exist = $drive + ":\" + $file
-if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
+#if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
 #
 echo "Prepare encryption key and IV"
 sleep 10
