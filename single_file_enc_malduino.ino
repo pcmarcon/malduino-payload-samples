@@ -1,4 +1,5 @@
 /*
+Single File Encryption Payload for ORIGINAL MALDUINO hw
 Copyright (c) 2021, Pauo C. Marcon (Licensed under MIT)
 For more information see: https://github.com/pcmarcon/malduino-payload-sample
 */
@@ -7,7 +8,7 @@ For more information see: https://github.com/pcmarcon/malduino-payload-sample
 #include "Mouse.h"
 
 #define blinkInterval 50
-#define ledPin 3            // original malduino hw use ledpin 3 | generic USB ATMEGA32U4 hw use ledpin 13
+#define ledPin 3            // original malduino hw use ledpin 3
 #define buttonPin 6
 
 int defaultDelay = 4;
