@@ -1,10 +1,10 @@
-Malduino Payload Samples
-========================
-just few samples to simulate ransomware atack using malduino to run these payloads
+Malduino Payload Script Samples
+===============================
+just few script samples to simulate ransomware atack using malduino (origina or generic) to run the payloads
 
 samples based on https://github.com/H0neyBadger/H0ney ransomware POC PowerShell
 
-please take a look on H0neyBadger repository if you intent to decript files also....
+please take a look on H0neyBadger repository for more details or if you intent to decript files also....
 
 
 
