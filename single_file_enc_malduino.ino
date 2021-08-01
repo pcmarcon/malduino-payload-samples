@@ -1,6 +1,6 @@
 /*
 Single File Encryption Payload for ORIGINAL MALDUINO hw
-Copyright (c) 2021, Pauo C. Marcon (Licensed under MIT)
+Copyright (c) 2021, Paulo C. Marcon (Licensed under MIT)
 For more information see: https://github.com/pcmarcon/malduino-payload-sample
 */
 
