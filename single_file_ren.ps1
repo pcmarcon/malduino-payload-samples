@@ -1,11 +1,11 @@
 # BTBit Powershell Ransomware PoC 
-# file to encrypt
+# file to rename
 $file = "test.txt"
 $drive = (get-location).Drive.Name
 $file_exist = "$drive" + ":\" + "$file"
 if (-not(Test-Path -Path $file_exist -PathType Leaf)) { exit }
 #
-# remove the clear file from the disk
+# just rename the file to .ren
 mv "$file" "$file.ren"
 #
 # show encryption screen
