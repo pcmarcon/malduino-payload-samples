@@ -10,9 +10,11 @@ please take a look on H0neyBadger repository for more details or if you intent t
 
 Payload Sample Files
 ====================
-single_file_enc.ps1 - encrypt the file test.txt on the current drive and show a fake screen asking for payment
+single_file_enc.ps1 - encrypt the file test.txt in the current drive and show a fake screen asking for payment
 
-single_file_ren.ps1 - just rename the file test.txt the current drive to test.txt.ren (no encryption) and show a fake screen asking for payment
+single_file_ren.ps1 - just rename the file test.txt in the current drive to test.txt.ren (no encryption) and show a fake screen asking for payment
+
+multiple_files_ren.ps1 - rename all files .db in the current drive to .db.ren (no encryption) and show a fake screen asking for payment
 
 screen_enc.jpg - fake ransomware encryption image to display
 
