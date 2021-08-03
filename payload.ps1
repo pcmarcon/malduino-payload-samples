@@ -20,15 +20,14 @@ if ($file_path -eq "") {
 }
 
 get-location
-ls 
+ls
 
 if ($type -eq "single_enc") {
   echo "single file encryption " 
   echo $file
   if ($file -eq "") { return }    
-  if ($file_drive -eq "") { $file_drive = (get-location).Drive.Name }
-  $file_exist = "$file_drive" + ":\" + "$file_enc"
-  if (-not(Test-Path -Path $file_exist -PathType Leaf)) { return }
+  $file_full_path = "$file_path\$file"      
+  if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { return }
   #
   # Prepare encryption key and IV
   $RNGCrypto = New-Object System.Security.Cryptography.RNGCryptoServiceProvider 
@@ -48,14 +47,14 @@ if ($type -eq "single_enc") {
   echo "IV: $iv"
   $AES.Padding = [System.Security.Cryptography.PaddingMode]::PKCS7
   $Encryptor = $AES.CreateEncryptor()
-  $bytes = gc $file_enc -Encoding byte
+  $bytes = gc $file -Encoding byte
   # remove the clear file from the disk
-  rm "$file_enc"
+  rm "$file"
   #
   $encryptedData = $Encryptor.TransformFinalBlock($bytes, 0, $bytes.Length)
   [byte[]] $fullData = $AES.IV + $encryptedData
   # save IV and the encrypted in file.enc
-  sc -Value $fullData -LiteralPath "$file_enc.enc" -Encoding byte
+  sc -Value $fullData -LiteralPath "$file.enc" -Encoding byte
   # cleare original file from memory 
   $bytes = $Null
   #
@@ -75,7 +74,7 @@ if ($type -eq "multi_ren") {
 
 if ($type -eq "single_ren") { 
   if ($file -eq "") { return }    
-  $file_full_path = "$file_path\$file"       #-join($curdir, $file)
+  $file_full_path = "$file_path\$file"      
   if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { return }
   mv "$file" "$file.ren"
 }
