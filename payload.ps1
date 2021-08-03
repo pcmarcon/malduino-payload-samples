@@ -23,6 +23,7 @@ if (-not($file_path -eq "")) {
 }
 
 get-location
+ls 
 
 if ($type -eq "single_enc") {
   echo "single file encryption " 
