@@ -6,19 +6,16 @@
 # $file = name of the file or filter for multi_ren. ex: test.txt or .db
 # if variable is not set the process will not be executed
 #
-# $file_drive = drive where the script will run. Ex: d
-# $file_path = path where the file(s) is located. Ex: \ or \data
+# $file_path = path where the file(s) is located. Ex: d:\data
 # if variable is not set then current drive and current path will be used
 # 
 # display fake encryption screen
 # $show_screen = "yes" or "true" will show. any other value will NOT show  
 #
 get-variable | out-string
-if (-not($file_drive -eq "")) { 
-  $file_drive_long = $file_drive+":" 
-  Set-Location $file_drive_long
-}
-if (-not($file_path -eq "")) { 
+if ($file_path -eq "") { 
+  $file_path=Get-Location
+} else {
   Set-Location "$file_path"
 }
 
@@ -80,9 +77,9 @@ if ($type -eq "single_ren") {
   echo 'single file renaming ' 
   echo $file
   if ($file -eq "") { echo "saida"; return }    
-  $curdir = get-location  
-  echo $curdir
-  $file_full_path = "$curdir\$file"       #-join($curdir, $file)
+#   $curdir = get-location  
+#   echo $curdir
+  $file_full_path = "$file_path\$file"       #-join($curdir, $file)
   echo $file_full_path
   if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { echo "saida 2"; return }
   mv "$file" "$file.ren"
