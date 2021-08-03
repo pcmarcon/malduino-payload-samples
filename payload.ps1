@@ -21,7 +21,8 @@ if (-not($file_drive -eq "")) {
 if (-not($file_path -eq "")) { Set-Location "$file_path" }
 
 if ($type -eq "single_enc") {
-  echo "single file encryption " $file
+  echo "single file encryption " 
+  echo $file
   if ($file -eq "") { return }    
   if ($file_drive -eq "") { $file_drive = (get-location).Drive.Name }
   $file_exist = "$file_drive" + ":\" + "$file_enc"
@@ -62,7 +63,8 @@ if ($type -eq "single_enc") {
 }
 
 if ($type -eq "multi_ren") { 
-  echo "multi file renaming " $file
+  echo "multi file renaming " 
+  echo $file
   if ($file -eq "") { return }    
   $file_count = (gci -Path . -File | where fullname -like "*$file").Count
   if ($file_count -eq "0") { exit }
@@ -70,7 +72,8 @@ if ($type -eq "multi_ren") {
 }
 
 if ($type -eq "single_ren") { 
-  echo "single file renaming " $file
+  echo 'single file renaming ' 
+  echo $file
   if ($file -eq "") { return }    
   $curdir = get-location;  
   $file_full_path = -join($curdir, $file)
