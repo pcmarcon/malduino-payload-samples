@@ -79,7 +79,7 @@ if ($type -eq "single_ren") {
   echo 'single file renaming ' 
   echo $file
   if ($file -eq "") { echo "saida"; return }    
-  $curdir = get-location;  
+  $curdir = get-location  
   echo $curdir
   $file_full_path = -join($curdir, $file)
   echo $file_ful_path
