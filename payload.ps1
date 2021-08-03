@@ -24,9 +24,9 @@ if (-not($file_path -eq "")) {
   echo $file_path
 }
 
-#echo '***********'
-#echo $PWD
-#echo '***********'
+echo '***********'
+echo $PWD
+echo '***********'
 
 if ($type -eq "single_enc") {
   echo "single file encryption " 
