@@ -13,7 +13,7 @@
 # display fake encryption screen
 # $show_screen = "yes" or "true" will show. any other value will NOT show  
 #
-$xxx = -join("file_drive: ", $file_drive, "!")
+$xxx = -join("file_drive:", $file_drive, "!")
 echo $xxx
 if (-not($file_drive -eq "")) { 
   $file_drive_long = $file_drive+":" 
