@@ -74,14 +74,9 @@ if ($type -eq "multi_ren") {
 }
 
 if ($type -eq "single_ren") { 
-  echo 'single file renaming ' 
-  echo $file
-  if ($file -eq "") { echo "saida"; return }    
-#   $curdir = get-location  
-#   echo $curdir
+  if ($file -eq "") { return }    
   $file_full_path = "$file_path\$file"       #-join($curdir, $file)
-  echo $file_full_path
-  if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { echo "saida 2"; return }
+  if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { return }
   mv "$file" "$file.ren"
 }
 
