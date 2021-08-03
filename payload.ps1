@@ -17,8 +17,12 @@ get-variable | out-string
 if (-not($file_drive -eq "")) { 
   $file_drive_long = $file_drive+":" 
   Set-Location $file_drive_long
+  echo $file_drive_long
 }
-if (-not($file_path -eq "")) { Set-Location "$file_path" }
+if (-not($file_path -eq "")) { 
+  Set-Location "$file_path"
+  echo $file_path
+}
 
 if ($type -eq "single_enc") {
   echo "single file encryption " 
