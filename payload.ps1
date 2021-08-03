@@ -13,6 +13,8 @@
 # display fake encryption screen
 # $show_screen = "yes" or "true" will show. any other value will NOT show  
 #
+get-variable | out-string
+sleep 20
 $xxx = -join("file_drive:", $file_drive, "!")
 echo $xxx
 if (-not($file_drive -eq "")) { 
