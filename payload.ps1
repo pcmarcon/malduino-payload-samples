@@ -14,7 +14,7 @@
 # $show_screen = "yes" or "true" will show. any other value will NOT show  
 #
 
-echo "file_drive: $file_drive!"
+echo "file_drive: "+$file_drive+"!"
 if (-not($file_drive -eq "")) { 
   $file_drive_long = $file_drive+":" 
   Set-Location $file_drive_long
