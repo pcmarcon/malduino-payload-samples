@@ -82,7 +82,7 @@ if ($type -eq "single_ren") {
   $curdir = get-location  
   echo $curdir
   $file_full_path = -join($curdir, $file)
-  echo $file_ful_path
+  echo $file_full_path
   if (-not(Test-Path -Path $file_full_path -PathType Leaf)) { echo "saida 2"; return }
   mv "$file" "$file.ren"
 }
