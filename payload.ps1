@@ -15,7 +15,10 @@
 #
 
 echo "file_drive: $file_drive"
-if (-not($file_drive -eq "")) { $file_drive_long = $file_drive+":"; Set-Location "$file_drive_long" }
+if (-not($file_drive -eq "")) { 
+  $file_drive_long = $file_drive+":" 
+  Set-Location $file_drive_long
+}
 if (-not($file_path -eq "")) { Set-Location "$file_path" }
 
 if ($type -eq "single_enc") { Do_Single_File_ENC }
