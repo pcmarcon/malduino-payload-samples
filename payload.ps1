@@ -25,7 +25,7 @@ if (-not($file_path -eq "")) {
 }
 
 #echo "-----------"
-echo $PWD
+#echo $PWD
 #echo "-----------"
 
 if ($type -eq "single_enc") {
